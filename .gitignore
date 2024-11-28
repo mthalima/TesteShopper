@@ -1,0 +1,30 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output
+/build
+
+# Dependencies
+/node_modules
+
+# Testing
+/coverage
+
+# Service workers
+/src/service-worker.js.map
+
+
+# Dependencies
+/node_modules
+
+# Logs
+logs
+*.log
+
+# Debug files
+npm-debug.log*
+
+# Temporary files
+/tmp

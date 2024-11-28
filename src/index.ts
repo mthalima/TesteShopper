@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
+import path from "path";
 
 const db = require("./database");
 
@@ -11,6 +12,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const apiKey = process.env.GOOGLE_API_KEY;
+const PORT = 8080;
+
+//RENDERIZAÇÃO DO FRONTEND>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+app.use(express.static(path.join(__dirname, "../../frontend/build")));
 
 // ROTAS DA API >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -94,7 +100,7 @@ app.post(
       const destinationLat = directions.routes[0].legs[0].end_location.lat;
       const destinationLng = directions.routes[0].legs[0].end_location.lng;
 
-      //RESPOSTA DA API PARA O FRONTEND
+      //RESPOSTA DA API PARA O FRONTENDclear
 
       res.status(200).json({
         customer_id: customer_id,
@@ -200,8 +206,7 @@ app.get("/rides/:id", (req: Request, res: Response) => {
 });
 
 // Iniciar o servidor
-const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-  console.log("Front end na porta 80, ou 3000!!!");
+  console.log(">>>>>Front end na porta 80, ou 3000<<<<<");
 });

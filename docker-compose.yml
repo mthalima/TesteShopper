@@ -1,11 +1,18 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "80:8080" # Map port 80 on the host to port 8080 in the container
-    environment:
-      - NODE_ENV=production
+  backend:
+    image: node:14
+    working_dir: /app
     volumes:
-      - .:/app # Mount the local directory to the container for development
+      - ./backend:/app
+    ports:
+      - "8080:8081"
+    command: npm run dev
+
+  frontend:
+    image: node:14
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "80:81"
+    command: npm start

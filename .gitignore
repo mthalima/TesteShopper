@@ -12,10 +12,6 @@
 # Testing
 /coverage
 
-# Service workers
-/src/service-worker.js.map
-
-
 # Dependencies
 /node_modules
 
